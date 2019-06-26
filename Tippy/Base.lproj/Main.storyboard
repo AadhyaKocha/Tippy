@@ -93,7 +93,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="sIS-o7-0hU">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="dt1-BC-L1T">
+                        <barButtonItem key="rightBarButtonItem" title="Settings" id="dt1-BC-L1T">
                             <connections>
                                 <segue destination="MnA-vy-v66" kind="push" id="3I4-LK-TgN"/>
                             </connections>

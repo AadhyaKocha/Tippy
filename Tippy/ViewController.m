@@ -43,7 +43,7 @@
     double total = bill + tip;
     
     self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
-    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
+    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
 }
 
 - (IBAction)onEditingBegin:(id)sender {
@@ -66,6 +66,28 @@
     }];
     
     self.billField.frame = newFrame;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    //NSLog(@"View will appear");
+
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSUInteger SelectedTip = [defaults integerForKey:@"default_settings"];
+    self.tipControl.selectedSegmentIndex = SelectedTip;
+    
+    double bill = [self.billField.text doubleValue];
+    
+    NSArray *percentages = @[@(0.15), @(0.2), @(0.22)];
+    
+    double tipPercentage = [percentages[self.tipControl.selectedSegmentIndex] doubleValue];
+    
+    double tip = tipPercentage * bill;
+    double total = bill + tip;
+    
+    self.tipLabel.text = [NSString stringWithFormat:@"$%.2f", tip];
+    self.totalLabel.text = [NSString stringWithFormat:@"$%.2f", total];
 }
 
 @end
